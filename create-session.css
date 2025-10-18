@@ -1,0 +1,231 @@
+/* Reset */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Be Vietnam Pro', 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+body { background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%); }
+
+/* Navbar */
+.navbar {
+  background-color: #004d80;
+  color: white;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 36px; /* Thay đổi cho phù hợp logo */
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  transition: background 0.2s, color 0.2s;
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: white;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease, opacity 0.2s;
+}
+
+.nav-links a:hover::after,
+.nav-links .active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.btn-login {
+  background: white;
+  color: #0065ca !important;
+  font-weight: 600;
+  padding: 8px 20px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(to right, #0065ca, #004a95);
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background: white;
+  color: #0065ca;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.cta-button:hover {
+  background: #ddd;
+}
+
+/* Features */
+.features {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.features h2 {
+  color: #0065ca;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item h3 {
+  margin-bottom: 10px;
+  color: #0065ca;
+}
+
+.feature-item p {
+  color: #555;
+}
+
+/* ----- Session Select Page ----- */
+
+.session-select {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.session-select h2 {
+  font-size: 28px;
+  color: #0065ca;
+  margin-bottom: 40px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.select-card {
+  width: 280px;
+  background: #ffffff;
+  padding: 36px 24px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #eef2f7;
+  position: relative;
+}
+
+.select-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #0065ca;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.select-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  border-color: #0065ca;
+}
+
+.select-card:hover::before {
+  transform: scaleX(1);
+}
+
+.select-card .icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.select-card h3 {
+  color: #0065ca;
+  margin-bottom: 8px;
+}
+
+.select-card p {
+  color: #555;
+  font-size: 15px;
+}

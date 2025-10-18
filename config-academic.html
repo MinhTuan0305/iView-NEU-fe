@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cấu hình Thi Vấn Đáp</title>
+  <link rel="stylesheet" href="create-session.css" /> <!-- vẫn kế thừa style chung -->
+  <link rel="stylesheet" href="config-academic.css" /> <!-- style riêng cho trang này -->
+</head>
+<body>
+
+  <!-- Navigation dùng chung -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="logo-neu2.png" alt="Logo NEU" class="logo" />
+      <span class="brand-name">iView NEU</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="create-session.html" class="active">Tạo Buổi Phỏng Vấn</a></li>
+      <li><a href="history.html">Lịch Sử</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="login.html" class="btn-login">Đăng Nhập</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Config Section -->
+  <section class="config-wrapper">
+    <h2>Cấu hình buổi thi vấn đáp</h2>
+
+    <form class="config-form">
+      
+      <!-- Tên buổi phỏng vấn -->
+      <label>
+        <span>Tên buổi phỏng vấn</span>
+        <input type="text" placeholder="Ví dụ: Thi vấn đáp Triết học Mác – Lênin" required>
+      </label>
+
+      <!-- Chọn môn học -->
+      <label>
+        <span>Môn học / Chủ đề</span>
+        <select required>
+          <option value="">-- Chọn môn học --</option>
+          <option>Triết học Mác - Lênin</option>
+          <option>Kinh tế vi mô</option>
+          <option>Tài chính doanh nghiệp</option>
+          <option>Kinh tế lượng</option>
+          <option>Khác...</option>
+        </select>
+      </label>
+
+      <!-- Upload file -->
+      <label>
+        <span>Thêm giáo trình / đề cương môn học nếu có (PDF, DOCX, TXT...)</span>
+        <input type="file" multiple accept=".pdf,.doc,.docx,.txt" />
+      </label>
+
+      <label>
+        <span>Thêm bảng điểm của sinh viên (PDF, DOCX, TXT...)</span>
+        <input type="file" multiple accept=".pdf,.doc,.docx,.txt" />
+      </label>
+
+      <!-- Option: Số câu hỏi AI đặt -->
+      <label>
+        <span>Số câu hỏi AI sẽ hỏi</span>
+        <select required>
+            <option value="5">5 câu</option>
+            <option value="10">10 câu</option>
+            <option value="15">15 câu</option>
+            <option value="20">20 câu</option>
+        </select>
+       </label>
+
+      <div class="button-group">
+        <button type="submit" class="btn-primary">Bắt đầu phỏng vấn</button>
+        <a href="create-session.html" class="btn-secondary">Quay lại</a>
+      </div>
+    </form>
+
+  </section>
+
+</body>
+</html>

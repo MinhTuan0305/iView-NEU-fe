@@ -1,0 +1,156 @@
+/* Dashboard specific styling - follow theme #0065ca + white */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+.dashboard-container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 20px;
+}
+
+body { background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%); }
+* { font-family: 'Be Vietnam Pro', 'Inter', 'Segoe UI', Arial, sans-serif; }
+
+/* Stat cards */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.stat-card {
+  background: white;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  border: 1px solid #eef2f7;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+  border-color: #0065ca;
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  font-size: 28px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(0,101,202,0.12), rgba(0,101,202,0.06));
+  color: #0065ca;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.1);
+}
+
+.stat-body .stat-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0065ca;
+}
+
+.stat-body .stat-label {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* Charts area */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 26px;
+}
+
+.chart-card {
+  background: white;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  border: 1px solid #eef2f7;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-card:hover {
+  border-color: #0065ca;
+}
+
+.chart-card h3 {
+  margin: 0 0 16px 0;
+  color: #004a95;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Recent table */
+.recent-row {
+  background: white;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  border: 1px solid #eef2f7;
+}
+
+.recent-row h3 {
+  margin: 0 0 12px 0;
+  color: #0065ca;
+}
+
+.recent-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recent-table th, .recent-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  font-size: 14px;
+}
+
+.recent-table th {
+  background: #f5f7fb;
+  color: #333;
+}
+
+/* Buttons in table */
+.btn-view, .btn-delete {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-view {
+  background: #0065ca;
+  color: white;
+  margin-right: 6px;
+  box-shadow: 0 2px 8px rgba(0,101,202,0.25);
+}
+
+.btn-delete {
+  background: #e15554;
+  color: white;
+  box-shadow: 0 2px 8px rgba(225,85,84,0.25);
+}
+
+.btn-view:hover { transform: translateY(-1px); }
+.btn-delete:hover { transform: translateY(-1px); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .charts-row { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .stats-row { grid-template-columns: 1fr; }
+  .stat-card { justify-content: space-between; }
+}

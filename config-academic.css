@@ -1,0 +1,328 @@
+/* Reset */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Be Vietnam Pro', 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+body { background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%); }
+
+/* Navbar */
+.navbar {
+  background-color: #004d80;
+  color: white;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 36px; /* Thay đổi cho phù hợp logo */
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-login {
+  background: white;
+  color: #0065ca !important;
+  font-weight: bold;
+  padding: 6px 14px;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(to right, #0065ca, #004a95);
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background: white;
+  color: #0065ca;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.cta-button:hover {
+  background: #ddd;
+}
+
+/* Features */
+.features {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.features h2 {
+  color: #0065ca;
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.feature-item {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item h3 {
+  margin-bottom: 10px;
+  color: #0065ca;
+}
+
+.feature-item p {
+  color: #555;
+}
+
+/* ========================= */
+/* ⚙️ CONFIG-ACADEMIC PAGE   */
+/* ========================= */
+
+.config-wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 40px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  border: 1px solid #eef2f7;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.config-wrapper:hover {
+  border-color: #0065ca;
+}
+
+.config-wrapper h2 {
+  text-align: center;
+  color: #0065ca;
+  margin-bottom: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.config-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.config-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+}
+
+.config-form input,
+.config-form select {
+  padding: 14px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 15px;
+}
+
+.config-form input:hover,
+.config-form select:hover {
+  border-color: #0065ca;
+}
+
+.btn-primary {
+  background: #0065ca;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,101,202,0.25);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: #004a95;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,101,202,0.35);
+}
+
+.btn-primary:hover {
+  background: #004a95;
+}
+
+/* Dropdown style nhất quán */
+.config-form select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  background: white;
+  cursor: pointer;
+}
+
+/* Group nút hành động */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Nút quay lại */
+.btn-secondary {
+  display: inline-block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  background: #ccc;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #b3b3b3;
+}
+
+/* Inputs focus */
+.config-form input:focus-visible,
+.config-form select:focus-visible {
+  outline: none;
+  border-color: #0065ca;
+  box-shadow: 0 0 0 3px rgba(0,101,202,0.15);
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(180deg, #f7faff 0%, #f5f7fb 100%);
+  padding: 40px 0;
+  color: #333;
+  border-top: 1px solid #eef2f7;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.footer-section h3 {
+  color: #0065ca;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.footer-section p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #0065ca;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.social-links a:hover {
+  color: #0065ca;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eef2f7;
+  color: #666;
+  font-size: 14px;
+}

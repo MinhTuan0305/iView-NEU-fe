@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cấu hình Phỏng Vấn Việc Làm</title>
+  <link rel="stylesheet" href="create-session.css" />
+  <link rel="stylesheet" href="config-job.css" />
+</head>
+<body>
+
+  <!-- Navigation dùng chung -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="logo-neu2.png" alt="Logo NEU" class="logo" />
+      <span class="brand-name">iView NEU</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="create-session.html" class="active">Tạo Buổi Phỏng Vấn</a></li>
+      <li><a href="history.html">Lịch Sử</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="login.html" class="btn-login">Đăng Nhập</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Config Section -->
+  <section class="config-wrapper">
+    <h2>Cấu hình buổi phỏng vấn việc làm</h2>
+
+    <form class="config-form">
+      
+      <!-- Tên buổi phỏng vấn -->
+      <label>
+        <span>Tên buổi phỏng vấn</span>
+        <input type="text" placeholder="Ví dụ: PV - Data Analyst Intern" required>
+      </label>
+
+      <!-- Vị trí công việc -->
+      <label>
+        <span>Vị trí công việc</span>
+        <input type="text" placeholder="Ví dụ: Business Analyst Intern" required>
+      </label>
+
+      <!-- Upload CV -->
+      <label>
+        <span>Tải lên CV của ứng viên (nhiều file nếu cần)</span>
+        <input type="file" multiple accept=".pdf,.doc,.docx" />
+      </label>
+
+      <!-- Upload JD -->
+      <label>
+        <span>Tải lên JD công việc (nhiều file nếu cần)</span>
+        <input type="file" multiple accept=".pdf,.doc,.docx,.txt" />
+      </label>
+
+      <!-- Level -->
+      <label>
+        <span>Level tuyển dụng</span>
+        <select required>
+          <option value="intern">Intern</option>
+          <option value="fresher">Fresher</option>
+          <option value="junior">Junior</option>
+          <option value="middle">Middle</option>
+          <option value="senior">Senior</option>
+          <option value="leader">Leader</option>
+          <option value="executive">Executive</option>
+        </select>
+      </label>
+
+      <!-- Thời gian phỏng vấn -->
+      <label>
+        <span>Giới hạn thời gian</span>
+        <select required>
+          <option value="5">5 Phút</option>
+          <option value="10">10 Phút</option>
+          <option value="15">15 Phút</option>
+          <option value="20">20 Phút</option>
+        </select>
+      </label>
+
+      <div class="button-group">
+        <button type="submit" class="btn-primary">Bắt đầu phỏng vấn</button>
+        <a href="create-session.html" class="btn-secondary">Quay lại</a>
+      </div>
+    </form>
+
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lịch Sử Phỏng Vấn</title>
+  <link rel="stylesheet" href="history.css">
+</head>
+<body>
+
+  <!-- Navigation dùng chung -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="logo-neu2.png" alt="Logo NEU" class="logo" />
+      <span class="brand-name">iView NEU</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="create-session.html">Tạo Buổi Phỏng Vấn</a></li>
+      <li><a href="history.html" class="active">Lịch Sử</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="login.html" class="btn-login">Đăng Nhập</a></li>
+    </ul>
+  </nav>
+
+  <!-- Lịch sử phỏng vấn -->
+  <section class="history-section">
+    <h2>Lịch Sử Các Buổi Phỏng Vấn</h2>
+
+    <!-- Bộ lọc -->
+    <div class="filter-bar">
+      <label for="filter-type">Lọc theo loại:</label>
+      <select id="filter-type">
+        <option value="all">Tất cả</option>
+        <option value="academic">🎓 Thi vấn đáp</option>
+        <option value="job">💼 Phỏng vấn việc làm</option>
+      </select>
+    </div>
+
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Loại Phiên</th>
+          <th>Thời Gian</th>
+          <th>Kết Quả</th>
+          <th>Hành Động</th>
+        </tr>
+      </thead>
+      <tbody id="history-body">
+        <!-- Mock data -->
+        <tr data-type="academic">
+          <td>🎓 Thi vấn đáp: Kinh tế vi mô</td>
+          <td>15/10/2025 - 14:30</td>
+          <td>8.5 / 10</td>
+          <td>
+            <button class="btn-view">Xem lại</button>
+            <button class="btn-delete">Xóa</button>
+          </td>
+        </tr>
+        <tr data-type="job">
+          <td>💼 Phỏng vấn: Data Intern</td>
+          <td>14/10/2025 - 10:00</td>
+          <td>Pass</td>
+          <td>
+            <button class="btn-view">Xem lại</button>
+            <button class="btn-delete">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+<script>
+  const filterSelect = document.getElementById("filter-type");
+  const rows = document.querySelectorAll("#history-body tr");
+
+  filterSelect.addEventListener("change", () => {
+    const value = filterSelect.value;
+    rows.forEach(row => {
+      if (value === "all" || row.dataset.type === value) {
+        row.style.display = "";
+      } else {
+        row.style.display = "none";
+      }
+    });
+  });
+
+  // Xử lý sự kiện mock cho nút xóa
+  document.querySelectorAll(".btn-delete").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (confirm("Bạn có chắc muốn xóa mục này?")) {
+        btn.closest("tr").remove();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

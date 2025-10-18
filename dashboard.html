@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Dashboard - AI Interview NEU</title>
+  <link rel="stylesheet" href="create-session.css"> <!-- chung -->
+  <link rel="stylesheet" href="dashboard.css"> <!-- riêng -->
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="logo-neu2.png" alt="Logo NEU" class="logo" />
+      <span class="brand-name">iView NEU</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="create-session.html">Tạo Buổi Phỏng Vấn</a></li>
+      <li><a href="history.html">Lịch Sử</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="login.html" class="btn-login">Đăng Nhập</a></li>
+    </ul>
+  </nav>
+
+  <main class="dashboard-container">
+    <!-- Stat cards -->
+    <section class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon">📁</div>
+        <div class="stat-body">
+          <div class="stat-number" id="total-sessions">—</div>
+          <div class="stat-label">Tổng số buổi</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-body">
+          <div class="stat-number" id="avg-score">—</div>
+          <div class="stat-label">Điểm trung bình</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div class="stat-body">
+          <div class="stat-number" id="count-academic">—</div>
+          <div class="stat-label">Thi vấn đáp</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon">💼</div>
+        <div class="stat-body">
+          <div class="stat-number" id="count-job">—</div>
+          <div class="stat-label">Phỏng vấn việc làm</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-row">
+      <div class="chart-card">
+        <h3>Tỷ lệ Thi vấn đáp vs Phỏng vấn việc làm</h3>
+        <canvas id="pieChart" height="240"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3>Số buổi theo ngày (7 ngày gần nhất)</h3>
+        <canvas id="barChart" height="240"></canvas>
+      </div>
+    </section>
+
+    <!-- Recent sessions -->
+    <section class="recent-row">
+      <h3>5 phiên gần đây</h3>
+      <table class="recent-table">
+        <thead>
+          <tr>
+            <th>Phiên</th>
+            <th>Loại</th>
+            <th>Thời gian</th>
+            <th>Kết quả</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="recent-body">
+          <!-- sẽ fill bởi JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+<script>
+/* ===== MOCK DATA (ngẫu nhiên mẫu) ===== */
+/* 7 ngày gần nhất labels */
+const days = [];
+for (let i = 6; i >= 0; i--) {
+  const d = new Date();
+  d.setDate(d.getDate() - i);
+  days.push(d.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }));
+}
+
+/* Random sample counts for each day */
+function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+const academicCounts = days.map(() => rand(0, 3)); // Thi vấn đáp mỗi ngày
+const jobCounts = days.map(() => rand(0, 4));      // Phỏng vấn việc làm mỗi ngày
+
+/* Recent sessions mock (most recent first) */
+const recentSessions = [
+  { title: 'Thi vấn đáp: Kinh tế vi mô', type: 'academic', time: '15/10/2025 14:30', result: '8.5 / 10' },
+  { title: 'Phỏng vấn: Data Intern', type: 'job', time: '14/10/2025 10:00', result: 'Pass' },
+  { title: 'Thi vấn đáp: Kinh tế lượng', type: 'academic', time: '12/10/2025 09:00', result: '7.0 / 10' },
+  { title: 'Phỏng vấn: Business Analyst Intern', type: 'job', time: '10/10/2025 16:00', result: 'Pass' },
+  { title: 'Thi vấn đáp: Tài chính doanh nghiệp', type: 'academic', time: '08/10/2025 13:00', result: '9.0 / 10' },
+];
+
+/* Compute totals */
+const totalAcademic = academicCounts.reduce((a,b)=>a+b,0);
+const totalJob = jobCounts.reduce((a,b)=>a+b,0);
+const totalSessions = totalAcademic + totalJob;
+
+/* Compute average mock score (from recentSessions that have numeric score) */
+const numericScores = recentSessions
+  .map(s => {
+    const m = s.result.match(/^(\d+(\.\d+)?)\s*\/\s*10/);
+    return m ? parseFloat(m[1]) : null;
+  })
+  .filter(x => x !== null);
+
+const avgScore = numericScores.length ? (numericScores.reduce((a,b)=>a+b,0) / numericScores.length).toFixed(1) : 'N/A';
+
+/* Fill stat cards */
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('total-sessions').textContent = totalSessions;
+  document.getElementById('avg-score').textContent = avgScore === 'N/A' ? 'N/A' : (avgScore + ' / 10');
+  document.getElementById('count-academic').textContent = totalAcademic;
+  document.getElementById('count-job').textContent = totalJob;
+
+  /* Fill recent sessions table */
+  const tbody = document.getElementById('recent-body');
+  recentSessions.forEach((s, idx) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${s.title}</td>
+      <td>${s.type === 'academic' ? '🎓 Thi vấn đáp' : '💼 Phỏng vấn việc làm'}</td>
+      <td>${s.time}</td>
+      <td>${s.result}</td>
+      <td>
+        <button class="btn-view" data-idx="${idx}">Xem</button>
+        <button class="btn-delete" data-idx="${idx}">Xóa</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  document.querySelectorAll('.btn-delete').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (!confirm('Bạn có chắc muốn xóa mục này?')) return;
+      const idx = btn.dataset.idx;
+      // Mock remove from UI
+      btn.closest('tr').remove();
+    });
+  });
+
+  document.querySelectorAll('.btn-view').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.idx;
+      const s = recentSessions[idx];
+      alert(`Xem nhanh:\n${s.title}\n${s.time}\nKết quả: ${s.result}`);
+    });
+  });
+
+  /* ===== Chart.js: Pie Chart ===== */
+  const pieCtx = document.getElementById('pieChart').getContext('2d');
+  const pieChart = new Chart(pieCtx, {
+    type: 'pie',
+    data: {
+      labels: ['Thi vấn đáp', 'Phỏng vấn việc làm'],
+      datasets: [{
+        data: [totalAcademic, totalJob],
+        backgroundColor: ['#6fb6ff', '#005bb5'],
+        borderColor: '#fff',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      plugins: {
+        legend: { position: 'bottom' },
+        tooltip: { callbacks: {
+          label: ctx => `${ctx.label}: ${ctx.parsed} phiên`
+        }}
+      }
+    }
+  });
+
+  /* ===== Chart.js: Grouped Bar Chart ===== */
+  const barCtx = document.getElementById('barChart').getContext('2d');
+  const barChart = new Chart(barCtx, {
+    type: 'bar',
+    data: {
+      labels: days,
+      datasets: [
+        {
+          label: 'Thi vấn đáp',
+          data: academicCounts,
+          backgroundColor: '#9fd3ff',
+          stack: 'Stack 0'
+        },
+        {
+          label: 'Phỏng vấn việc làm',
+          data: jobCounts,
+          backgroundColor: '#0065ca',
+          stack: 'Stack 0'
+        }
+      ]
+    },
+    options: {
+      plugins: {
+        legend: { position: 'bottom' }
+      },
+      scales: {
+        x: {
+          stacked: false
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 1 }
+        }
+      }
+    }
+  });
+
+});
+</script>
+
+</body>
+</html>
