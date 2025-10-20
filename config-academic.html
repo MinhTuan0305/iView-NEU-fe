@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <title>Cấu hình Thi Vấn Đáp</title>
-  <link rel="stylesheet" href="create-session.css" /> <!-- vẫn kế thừa style chung -->
-  <link rel="stylesheet" href="config-academic.css" /> <!-- style riêng cho trang này -->
+  <link rel="stylesheet" href="create-session.css" /> 
+  <link rel="stylesheet" href="config-academic.css" />
+  <link rel="stylesheet" href="chat-widget.css" />
 </head>
 <body>
 
   <!-- Navigation dùng chung -->
   <nav class="navbar">
-    <div class="nav-left">
+    <a href="index.html" class="nav-left">
       <img src="logo-neu2.png" alt="Logo NEU" class="logo" />
       <span class="brand-name">iView NEU</span>
-    </div>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Trang Chủ</a></li>
       <li><a href="create-session.html" class="active">Tạo Buổi Phỏng Vấn</a></li>
       <li><a href="history.html">Lịch Sử</a></li>
+      <li><a href="exams.html">Kỳ Thi</a></li>
       <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="guide.html">Hướng Dẫn</a></li>
       <li><a href="login.html" class="btn-login">Đăng Nhập</a></li>
     </ul>
   </nav>
@@ -70,6 +73,28 @@
         </select>
        </label>
 
+       <div class="difficulty-group">
+        <span class="group-label">Độ khó</span>
+        <div class="radio-group">
+            <label class="radio-label">
+                <input type="radio" name="difficulty" value="5" checked>
+                <span class="radio-text">Tất cả</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="difficulty" value="10">
+                <span class="radio-text">Dễ</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="difficulty" value="15">
+                <span class="radio-text">Trung bình</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="difficulty" value="20">
+                <span class="radio-text">Khó</span>
+            </label>
+        </div>
+       </div>
+
       <div class="button-group">
         <button type="submit" class="btn-primary">Bắt đầu phỏng vấn</button>
         <a href="create-session.html" class="btn-secondary">Quay lại</a>
@@ -77,6 +102,9 @@
     </form>
 
   </section>
+
+  <!-- Chat Widget -->
+  <script src="chat-widget.js"></script>
 
 </body>
 </html>

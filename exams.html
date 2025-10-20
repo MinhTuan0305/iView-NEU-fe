@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Kỳ Thi - iView NEU</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* Page-specific light styles (keep consistent with style.css tokens) */
+    .exams-container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .page-title { color: var(--brand); font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 18px; }
+    .page-subtitle { color: var(--muted); margin-bottom: 24px; }
+    .exam-actions { display: flex; gap: 12px; margin-bottom: 18px; }
+    .exam-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+    .exam-card { background: #fff; border: 1px solid #e5eaf2; box-shadow: var(--shadow-sm); padding: 18px; transition: var(--transition); }
+    .exam-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--brand); }
+    .exam-title { font-size: 18px; color: var(--text); font-weight: 600; margin-bottom: 6px; }
+    .exam-meta { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+    .exam-footer { display: flex; justify-content: space-between; align-items: center; }
+    .exam-chip { background: #eef4ff; color: var(--brand); padding: 4px 10px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
+    .btn-small { padding: 8px 12px; font-size: 14px; }
+    .toolbar { background: #fff; border: 1px solid #e5eaf2; box-shadow: var(--shadow-sm); padding: 12px; display: flex; gap: 12px; align-items: center; }
+    .toolbar .select, .toolbar .input { max-width: 260px; }
+    @media (max-width: 600px) { .exam-actions { flex-direction: column; } .toolbar { flex-direction: column; align-items: stretch; } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="logo-neu2.png" alt="Logo NEU" class="logo" />
+      <span class="brand-name">iView NEU</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Trang Chủ</a></li>
+      <li><a href="create-session.html">Tạo Buổi Phỏng Vấn</a></li>
+      <li><a href="history.html">Lịch Sử</a></li>
+      <li><a href="exams.html" class="active">Kỳ Thi</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="guide.html">Hướng Dẫn</a></li>
+      <li><a href="login.html" class="btn-login">Đăng Nhập</a></li>
+    </ul>
+  </nav>
+
+  <main class="exams-container">
+    <h1 class="page-title">Kỳ Thi</h1>
+    <p class="page-subtitle">Danh sách các kỳ thi đã tạo như Giữa kỳ, Cuối kỳ. Bạn có thể lọc theo học phần hoặc tìm kiếm.</p>
+
+    <div class="exam-actions">
+      <div class="toolbar">
+        <select class="select" id="subjectFilter" aria-label="Lọc theo học phần">
+          <option value="all">Tất cả học phần</option>
+          <option value="kinhtevi">Kinh tế vi mô</option>
+          <option value="kinhteluong">Kinh tế lượng</option>
+          <option value="taichinhdn">Tài chính doanh nghiệp</option>
+        </select>
+        <input class="input" id="searchInput" placeholder="Tìm theo tên kỳ thi..." />
+      </div>
+    </div>
+
+    <section class="exam-grid" id="examGrid">
+      <!-- Sample cards -->
+      <article class="exam-card" data-subject="kinhtevi" data-name="Giữa kỳ Kinh tế vi mô">
+        <div class="exam-title">Giữa kỳ - Kinh tế vi mô</div>
+        <div class="exam-meta">Ngày thi: 25/10/2025 • Hình thức: Vấn đáp AI • Thời lượng: 10 phút</div>
+        <div class="exam-footer">
+          <span class="exam-chip">Giữa kỳ</span>
+          <div>
+            <button class="btn btn-primary btn-small">Vào thi</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="exam-card" data-subject="kinhteluong" data-name="Giữa kỳ Kinh tế lượng">
+        <div class="exam-title">Giữa kỳ - Kinh tế lượng</div>
+        <div class="exam-meta">Ngày thi: 10/11/2025 • Hình thức: Vấn đáp AI • Thời lượng: 12 phút</div>
+        <div class="exam-footer">
+          <span class="exam-chip">Giữa kỳ</span>
+          <div>
+            <button class="btn btn-primary btn-small">Vào thi</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="exam-card" data-subject="taichinhdn" data-name="Giữa kỳ Tài chính doanh nghiệp">
+        <div class="exam-title">Giữa kỳ - Tài chính doanh nghiệp</div>
+        <div class="exam-meta">Ngày thi: 05/11/2025 • Hình thức: Vấn đáp AI • Thời lượng: 8 phút</div>
+        <div class="exam-footer">
+          <span class="exam-chip">Giữa kỳ</span>
+          <div>
+            <button class="btn btn-primary btn-small">Vào thi</button>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Về iView</h3>
+        <p>Nền tảng thi vấn đáp AI giúp giảng viên và sinh viên tổ chức và tham gia kỳ thi dễ dàng.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Kết Nhanh</h3>
+        <ul class="footer-links">
+          <li><a href="create-session.html">Tạo Buổi Phỏng Vấn</a></li>
+          <li><a href="history.html">Lịch Sử Phỏng Vấn</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="exams.html">Kỳ Thi</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Liên Hệ</h3>
+        <ul class="footer-links">
+          <li>Email: support@neu.edu.vn</li>
+          <li>Điện thoại: 02436.280.280 (6323)</li>
+          <li>Địa chỉ: 207 Giải Phóng, Đồng Tâm, Hai Bà Trưng, Hà Nội</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 iView - Trường Đại học Kinh tế Quốc dân. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const subjectFilter = document.getElementById('subjectFilter');
+    const searchInput = document.getElementById('searchInput');
+    const examGrid = document.getElementById('examGrid');
+
+    function filterExams() {
+      const subject = subjectFilter.value;
+      const keyword = searchInput.value.toLowerCase();
+      Array.from(examGrid.children).forEach(card => {
+        const okSubject = subject === 'all' || card.dataset.subject === subject;
+        const okName = (card.dataset.name || '').toLowerCase().includes(keyword);
+        card.style.display = okSubject && okName ? '' : 'none';
+      });
+    }
+
+    subjectFilter.addEventListener('change', filterExams);
+    searchInput.addEventListener('input', filterExams);
+  </script>
+
+</body>
+</html>
+
+

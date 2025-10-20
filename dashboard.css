@@ -10,6 +10,54 @@
 body { background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%); }
 * { font-family: 'Be Vietnam Pro', 'Inter', 'Segoe UI', Arial, sans-serif; }
 
+/* Navbar styles for dashboard */
+.navbar {
+  background-color: #004d80;
+  color: white;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-left:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.logo {
+  height: 36px;
+  transition: transform 0.3s ease;
+}
+
+.nav-left:hover .logo {
+  transform: scale(1.05);
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-left:hover .brand-name {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
 /* Stat cards */
 .stats-row {
   display: grid;

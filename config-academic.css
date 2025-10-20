@@ -23,15 +23,37 @@ body { background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%); }
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-left:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
 }
 
 .logo {
   height: 36px; /* Thay đổi cho phù hợp logo */
+  transition: transform 0.3s ease;
+}
+
+.nav-left:hover .logo {
+  transform: scale(1.05);
 }
 
 .brand-name {
   font-size: 20px;
   font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-left:hover .brand-name {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .nav-links {
@@ -254,6 +276,76 @@ body { background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%); }
   outline: none;
   border-color: #0065ca;
   box-shadow: 0 0 0 3px rgba(0,101,202,0.15);
+}
+
+/* Radio Button Styles */
+.difficulty-group {
+  margin-bottom: 20px;
+}
+
+.group-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #dfe3ea;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+}
+
+.radio-label:hover {
+  border-color: #004d80;
+  background: #f8f9fa;
+}
+
+.radio-label input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #dfe3ea;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.radio-label input[type="radio"]:checked {
+  border-color: #004d80;
+}
+
+.radio-label input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #004d80;
+  border-radius: 50%;
+}
+
+.radio-text {
+  font-size: 15px;
+  color: #333;
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+  border-color: #004d80;
+  background: #f0f7ff;
 }
 
 /* Footer */

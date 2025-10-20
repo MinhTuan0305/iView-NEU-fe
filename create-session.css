@@ -23,15 +23,37 @@ body { background: linear-gradient(180deg, #eef4ff 0%, #f8fbff 100%); }
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-left:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
 }
 
 .logo {
   height: 36px; /* Thay đổi cho phù hợp logo */
+  transition: transform 0.3s ease;
+}
+
+.nav-left:hover .logo {
+  transform: scale(1.05);
 }
 
 .brand-name {
   font-size: 20px;
   font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-left:hover .brand-name {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .nav-links {

@@ -5,20 +5,23 @@
   <title>Cấu hình Phỏng Vấn Việc Làm</title>
   <link rel="stylesheet" href="create-session.css" />
   <link rel="stylesheet" href="config-job.css" />
+  <link rel="stylesheet" href="chat-widget.css" />
 </head>
 <body>
 
   <!-- Navigation dùng chung -->
   <nav class="navbar">
-    <div class="nav-left">
+    <a href="index.html" class="nav-left">
       <img src="logo-neu2.png" alt="Logo NEU" class="logo" />
       <span class="brand-name">iView NEU</span>
-    </div>
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Trang Chủ</a></li>
       <li><a href="create-session.html" class="active">Tạo Buổi Phỏng Vấn</a></li>
       <li><a href="history.html">Lịch Sử</a></li>
+      <li><a href="exams.html">Kỳ Thi</a></li>
       <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="guide.html">Hướng Dẫn</a></li>
       <li><a href="login.html" class="btn-login">Đăng Nhập</a></li>
     </ul>
   </nav>
@@ -75,6 +78,7 @@
           <option value="10">10 Phút</option>
           <option value="15">15 Phút</option>
           <option value="20">20 Phút</option>
+          <option value="30">30 Phút</option>
         </select>
       </label>
 
@@ -85,6 +89,9 @@
     </form>
 
   </section>
+
+  <!-- Chat Widget -->
+  <script src="chat-widget.js"></script>
 
 </body>
 </html>
