@@ -97,6 +97,17 @@ export default function Navbar() {
                 {pathname.startsWith('/teacher/review') && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></span>}
               </Link>
             </li>
+            <li className="flex items-center">
+              <Link 
+                href="/teacher/guide" 
+                className={`px-4 py-2 transition-all font-medium text-sm uppercase tracking-wide relative flex items-center ${
+                  pathname.startsWith('/teacher/guide') ? 'bg-white/10' : ''
+                } hover:bg-white/10`}
+              >
+                Hướng Dẫn
+                {pathname.startsWith('/teacher/guide') && <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"></span>}
+              </Link>
+            </li>
           </>
         ) : (
           <>

@@ -47,12 +47,12 @@ export default function Footer() {
         <div>
           <h3 className="text-white mb-6 text-lg uppercase tracking-wide font-semibold">Liên Hệ</h3>
           <ul className="list-none text-white/80 text-[15px]">
-            <li className="mb-3">Email: support@neu.edu.vn</li>
+            <li className="mb-3">Email: kcntt@neu.edu.vn</li>
             <li className="mb-3">Điện thoại: 02436.280.280 (6323)</li>
             <li className="mb-3">Địa chỉ: 207 Giải Phóng, Đồng Tâm, Hai Bà Trưng, Hà Nội</li>
           </ul>
           <div className="flex gap-5 mt-6">
-            <a href="#" className="text-white/80 hover:text-white transition-all hover:-translate-y-0.5 text-xl">
+            <a href="https://web.facebook.com/TruongDaiHocKTQD" className="text-white/80 hover:text-white transition-all hover:-translate-y-0.5 text-xl">
               <i className="fab fa-facebook"></i>
             </a>
             <a href="#" className="text-white/80 hover:text-white transition-all hover:-translate-y-0.5 text-xl">
