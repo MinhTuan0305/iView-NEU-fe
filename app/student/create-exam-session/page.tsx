@@ -26,12 +26,31 @@ export default function CreateExamSessionPage() {
     'Kế toán tài chính'
   ];
 
-  const materials = [
-    '',
-    'Giáo trình Kinh tế vi mô - GS. Nguyễn Văn A',
-    'Slide bài giảng Kinh tế lượng - TS. Trần Thị B',
-    'Tài liệu ôn tập Tài chính doanh nghiệp'
-  ];
+  // Load materials từ localStorage - chỉ hiển thị tài liệu public
+  const [materials, setMaterials] = useState<string[]>([]);
+
+  useEffect(() => {
+    const loadPublicMaterials = () => {
+      if (typeof window !== 'undefined') {
+        const stored = localStorage.getItem('uploadedMaterials');
+        if (stored) {
+          const allMaterials = JSON.parse(stored);
+          // Chỉ lấy tài liệu public
+          const publicMaterials = allMaterials
+            .filter((m: any) => m.isPublic === true)
+            .map((m: any) => m.name);
+          setMaterials(publicMaterials);
+          return;
+        }
+      }
+      // Default demo data - chỉ public
+      setMaterials([
+        'Giáo trình Kinh tế vi mô - GS. Nguyễn Văn A',
+        'Slide bài giảng Kinh tế lượng - TS. Trần Thị B'
+      ]);
+    };
+    loadPublicMaterials();
+  }, []);
 
   const bloomLevels = [
     { value: 'remember', label: 'Remember (Nhớ lại)' },
@@ -149,7 +168,7 @@ export default function CreateExamSessionPage() {
             <CustomSelect
               value={selectedMaterial}
               onChange={setSelectedMaterial}
-              options={materials.slice(1).map(material => ({ value: material, label: material }))}
+              options={materials.map(material => ({ value: material, label: material }))}
               placeholder="-- Không chọn tài liệu --"
             />
           </div>

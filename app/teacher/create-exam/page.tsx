@@ -10,9 +10,8 @@ export default function CreateExamPage() {
   const router = useRouter();
   const [examName, setExamName] = useState('');
   const [subjectName, setSubjectName] = useState('');
-  const [materialSource, setMaterialSource] = useState<'uploaded' | 'neureader' | 'new'>('uploaded');
+  const [materialSource, setMaterialSource] = useState<'uploaded' | 'neureader'>('uploaded');
   const [selectedMaterial, setSelectedMaterial] = useState('');
-  const [newMaterialFile, setNewMaterialFile] = useState<File | null>(null);
   const [timeLimit, setTimeLimit] = useState('');
   const [bloomLevel, setBloomLevel] = useState<string[]>([]);
   const [password, setPassword] = useState('');
@@ -22,12 +21,24 @@ export default function CreateExamPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Demo data
-  const uploadedMaterials = [
-    { id: '1', name: 'Giáo trình Kinh tế vi mô - GS. Nguyễn Văn A' },
-    { id: '2', name: 'Slide bài giảng Kinh tế lượng - TS. Trần Thị B' },
-    { id: '3', name: 'Tài liệu ôn tập Tài chính doanh nghiệp' }
-  ];
+  // Load materials từ localStorage hoặc API
+  // Giảng viên thấy tất cả tài liệu (cả public và private)
+  const loadMaterials = () => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('uploadedMaterials');
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    }
+    // Default demo data
+    return [
+      { id: '1', name: 'Giáo trình Kinh tế vi mô - GS. Nguyễn Văn A', isPublic: true },
+      { id: '2', name: 'Slide bài giảng Kinh tế lượng - TS. Trần Thị B', isPublic: true },
+      { id: '3', name: 'Tài liệu ôn tập Tài chính doanh nghiệp', isPublic: false }
+    ];
+  };
+
+  const [uploadedMaterials] = useState(loadMaterials());
 
   const bloomLevels = [
     { value: 'remember', label: 'Remember (Nhớ lại)' },
@@ -72,11 +83,6 @@ export default function CreateExamPage() {
 
     if (materialSource === 'uploaded' && !selectedMaterial) {
       setError('Vui lòng chọn tài liệu');
-      return;
-    }
-
-    if (materialSource === 'new' && !newMaterialFile) {
-      setError('Vui lòng upload tài liệu mới');
       return;
     }
 
@@ -171,45 +177,29 @@ export default function CreateExamPage() {
                   />
                   <span className="text-sm">NeuReader</span>
                 </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="materialSource"
-                    value="new"
-                    checked={materialSource === 'new'}
-                    onChange={(e) => setMaterialSource(e.target.value as 'new')}
-                    className="mr-2"
-                  />
-                  <span className="text-sm">Upload thêm tài liệu</span>
-                </label>
               </div>
 
               {materialSource === 'uploaded' && (
-                <CustomSelect
-                  value={selectedMaterial}
-                  onChange={setSelectedMaterial}
-                  options={uploadedMaterials.map(material => ({ value: material.id, label: material.name }))}
-                  placeholder="-- Chọn tài liệu --"
-                  required
-                />
+                <div className="space-y-2">
+                  <CustomSelect
+                    value={selectedMaterial}
+                    onChange={setSelectedMaterial}
+                    options={uploadedMaterials.map(material => ({ 
+                      value: material.id, 
+                      label: `${material.name} ${material.isPublic ? '(Public)' : '(Private)'}`
+                    }))}
+                    placeholder="-- Chọn tài liệu --"
+                    required
+                  />
+                  <p className="text-xs text-[#5f6368]">
+                    Public: Sinh viên có thể thấy • Private: Chỉ giảng viên thấy
+                  </p>
+                </div>
               )}
 
               {materialSource === 'neureader' && (
                 <div className="p-4 bg-blue-50 border border-blue-200 ">
                   <p className="text-sm text-blue-800">Tính năng tích hợp với NeuReader sẽ được kích hoạt khi có API.</p>
-                </div>
-              )}
-
-              {materialSource === 'new' && (
-                <div>
-                  <input
-                    type="file"
-                    accept=".pdf"
-                    onChange={(e) => setNewMaterialFile(e.target.files?.[0] || null)}
-                    required
-                    className="w-full px-4 py-2.5 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-[#0065ca]"
-                  />
-                  <p className="text-xs text-[#5f6368] mt-1">Chỉ chấp nhận file PDF</p>
                 </div>
               )}
             </div>
